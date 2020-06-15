@@ -1,6 +1,7 @@
 import PySimpleGUI as sg
 import random
 import sys
+from modulo_reglas import imprimir_reglas
 
 #Recibe la palabra y hace la comparacion con pattern,por ahora solo retorna True
 #FALTA TODO EL TRAMO DE PATTERN
@@ -229,7 +230,7 @@ def reinicio(fichas_recien_usadas,fichas_usadas,tuplas_recien_usadas,lista_tupla
 		lugar.Update('')
 		if k in lista_tuplas_usadas:
 			lista_tuplas_usadas.remove(k)
-	
+
 
 
 #programa principal:
@@ -249,7 +250,7 @@ tam_celda =25
 color_button = ('white','green')
 tam_button = 3,1
 but = lambda name : sg.Button(name,button_color=color_button,size=tam_button)
-layout = [[sg.Button('INICIAR',button_color=('white','black'),key='inicio'),sg.Text('Turno:                          ',key='tur'),sg.Button('Configuracion',button_color=('white','black'),key='conf')],
+layout = [[sg.Button('INICIAR',button_color=('white','black'),key='inicio'),sg.Text('Turno:                          ',key='tur'),sg.Button('Configuracion',button_color=('white','black'),key='conf'),sg.Button('Ranking',button_color=('white','black'),key='rank'),sg.Button('Reglas',button_color=('white','black'),key='reglas')],
          [sg.Column(column())],
         [but(letra_elegida(bolsa_fichas)),but(letra_elegida(bolsa_fichas)),but(letra_elegida(bolsa_fichas)),but(letra_elegida(bolsa_fichas)),but(letra_elegida(bolsa_fichas)),but(letra_elegida(bolsa_fichas)),but(letra_elegida(bolsa_fichas))],
         [sg.Button('Borrar',button_color=('black','white'),key='borrador'),sg.Button('Verificar',button_color=('white','red'),key='verifica')]]
@@ -333,6 +334,10 @@ while True:
             reinicio(fichas_recien_usadas,fichas_usadas,tuplas_recien_usadas,lista_tuplas_usadas)
         tuplas_recien_usadas=[]
         fichas_recien_usadas=[]
+    #USO DEL BOTON REGLAS
+    elif event=='reglas':
+        print('holaaaaaaaaaaaaa')
+        imprimir_reglas()
     elif event=='borrador':
         i=0
         dic_letra_anterior={}
